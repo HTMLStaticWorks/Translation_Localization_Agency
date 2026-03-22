@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Services | Lingua</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0B1F3A',
+                        secondary: '#2E86C1',
+                        accent: '#D4AF37',
+                        bgLight: '#F7FAFC',
+                        bgDark: '#071521',
+                        cardDark: '#0F2A3D',
+                        textDark: '#EAF4FF',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Poppins', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body class="transition-colors duration-500">
+
+    <!-- Header (Identical to index.html) -->
+    <header
+        class="fixed top-0 left-0 right-0 z-50 bg-white/80 dark:bg-bgDark/80 backdrop-blur-md transition-all duration-300 py-4">
+        <div class="container mx-auto px-6 md:px-12 flex items-center justify-between">
+            <a href="index.html" class="brand-logo flex items-center gap-2 group">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <span class="text-primary dark:text-textDark font-heading font-bold text-xl tracking-tight">Lingua
+                </span>
+            </a>
+            <nav class="hidden lg:flex items-center gap-8">
+                <a href="index.html"
+                    class="font-medium text-primary dark:text-textDark hover:text-secondary transition-colors">Home</a>
+                <a href="home-2.html"
+                    class="font-medium text-primary dark:text-textDark hover:text-secondary transition-colors">SaaS</a>
+                <a href="about.html"
+                    class="font-medium text-primary dark:text-textDark hover:text-secondary transition-colors">About</a>
+                <a href="services.html"
+                    class="font-medium text-secondary hover:text-secondary transition-colors">Services</a>
+                <a href="blog.html"
+                    class="font-medium text-primary dark:text-textDark hover:text-secondary transition-colors">Blog</a>
+                <a href="booking.html"
+                    class="font-medium text-primary dark:text-textDark hover:text-secondary transition-colors">Booking</a>
+                <a href="dashboard.html"
+                    class="font-medium text-primary dark:text-textDark hover:text-secondary transition-colors">Dashboard</a>
+                <div class="flex items-center gap-4 border-l border-gray-200 dark:border-gray-700 pl-6 ml-4">
+                    <a href="login.html"
+                        class="font-medium text-primary dark:text-textDark hover:text-secondary transition-colors">Login</a>
+                    <a href="register.html"
+                        class="px-5 py-2 bg-secondary text-white rounded-full font-semibold hover:bg-primary transition-all">Sign
+                        Up</a>
+                    <button id="theme-toggle" class="theme-toggle-btn text-primary dark:text-textDark"
+                        aria-label="Toggle Theme">
+                        <span id="theme-toggle-icon"></span>
+                    </button>
+                </div>
+            </nav>
+            <div class="flex items-center gap-4 lg:hidden">
+                <button id="menu-btn" class="text-primary dark:text-textDark" aria-label="Open Menu">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6h16M4 12h16m-7 6h7" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu Offcanvas -->
+    <div id="menu-overlay" class="fixed inset-0 bg-black/50 z-[60] hidden backdrop-blur-sm"></div>
+    <aside id="mobile-menu" class="fixed top-0 right-0 h-screen w-80 bg-white dark:bg-bgDark z-[70] p-8 shadow-2xl">
+        <div class="flex justify-between items-center mb-12">
+            <div class="brand-logo flex items-center gap-2">
+                <span class="text-primary dark:text-textDark font-heading font-bold text-xl">Lingua</span>
+            </div>
+            <button id="close-menu" class="text-primary dark:text-textDark hover:text-secondary">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+        </div>
+        <nav class="flex flex-col gap-6 text-xl">
+            <a href="index.html"
+                class="font-semibold text-primary dark:text-textDark hover:text-secondary transition-colors">Home</a>
+            <a href="home-2.html"
+                class="font-semibold text-primary dark:text-textDark hover:text-secondary transition-colors">SaaS
+                Variant</a>
+            <a href="about.html"
+                class="font-semibold text-primary dark:text-textDark hover:text-secondary transition-colors">About</a>
+            <a href="services.html" class="font-semibold text-secondary transition-colors">Services</a>
+            <a href="blog.html"
+                class="font-semibold text-primary dark:text-textDark hover:text-secondary transition-colors">Blog</a>
+            <a href="booking.html"
+                class="font-semibold text-primary dark:text-textDark hover:text-secondary transition-colors">Booking</a>
+            <a href="dashboard.html"
+                class="font-semibold text-primary dark:text-textDark hover:text-secondary transition-colors">Dashboard</a>
+            <hr class="border-gray-100 dark:border-gray-800 my-4">
+            <a href="login.html" class="font-semibold text-secondary transition-colors">Login</a>
+            <a href="register.html" class="px-5 py-3 bg-secondary text-white rounded-xl text-center font-semibold">Sign
+                Up</a>
+        </nav>
+    </aside>
+
+
+    <style>
+        .wave-hero-section {
+            background: #071521;
+            min-height: 80vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            margin-top: 80px;
+            /* Offset for header */
+        }
+
+        .text-wrapper {
+            position: relative;
+            z-index: 10;
+        }
+
+        .text-wrapper h2 {
+            color: #fff;
+            font-size: 12vw;
+            white-space: nowrap;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: var(--font-heading);
+            font-weight: 800;
+            letter-spacing: -0.05em;
+        }
+
+        .text-wrapper h2:nth-child(1) {
+            color: transparent;
+            -webkit-text-stroke: 2px rgba(61, 249, 198, 0.3);
+        }
+
+        .text-wrapper h2:nth-child(2) {
+            color: #3df9c6;
+            animation: wave-clip 4s ease-in-out infinite;
+        }
+
+        @keyframes wave-clip {
+
+            0%,
+            100% {
+                clip-path: polygon(0% 46%, 17% 45%, 34% 50%, 56% 61%, 69% 62%, 86% 60%, 100% 51%, 100% 100%, 0% 100%);
+            }
+
+            50% {
+                clip-path: polygon(0% 59%, 16% 64%, 33% 65%, 52% 61%, 70% 52%, 85% 47%, 100% 48%, 100% 100%, 0% 100%);
+            }
+        }
+
+        .waveDiv {
+            position: absolute;
+            overflow: hidden;
+            margin: auto;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            z-index: 1;
+        }
+
+        .wave-content-wrapper {
+            height: 100%;
+            width: 100%;
+            position: absolute;
+            overflow: hidden;
+            bottom: -1px;
+        }
+
+        .first-wave {
+            z-index: 3;
+            opacity: 0.4;
+            background: linear-gradient(to top, #2E86C1 20%, transparent 100%);
+        }
+
+        .second-wave {
+            z-index: 2;
+            opacity: 0.6;
+            background: linear-gradient(to top, #3df9c6 20%, transparent 100%);
+        }
+
+        .third-wave {
+            z-index: 1;
+            background: linear-gradient(to top, #071521 30%, transparent 100%);
+        }
+
+        .wave-image {
+            width: 200%;
+            height: 100%;
+            position: absolute;
+            left: 0;
+            background-repeat: repeat no-repeat;
+            background-position: 0 bottom;
+            transform-origin: center bottom;
+        }
+
+        .first-image {
+            background-size: 50% 100px;
+            background-image: url('https://www.yudiz.com/codepen/wave-animation/first-wave.png');
+        }
+
+        .second-image {
+            background-size: 50% 120px;
+            background-image: url('https://www.yudiz.com/codepen/wave-animation/second-wave.png');
+        }
+
+        .third-image {
+            background-size: 50% 140px;
+            background-image: url('https://www.yudiz.com/codepen/wave-animation/third-wave.png');
+        }
+
+        .animation-wave .second-image {
+            animation: wave-move 10s linear infinite;
+        }
+
+        .animation-wave .third-image {
+            animation: wave-move 15s linear infinite;
+        }
+
+        @keyframes wave-move {
+            0% {
+                transform: translateX(0) scaleY(1);
+            }
+
+            50% {
+                transform: translateX(-25%) scaleY(0.7);
+            }
+
+            100% {
+                transform: translateX(-50%) scaleY(1);
+            }
+        }
+    </style>
+
+    <main>
+        <!-- Wave Animated Hero -->
+        <section class="wave-hero-section">
+            <div class="container mx-auto relative z-10 flex flex-col items-center">
+                <div class="text-wrapper h-32 md:h-48 lg:h-64 flex items-center justify-center">
+                    <h2>LINGUA CORE</h2>
+                    <h2>LINGUA CORE</h2>
+                </div>
+                <div class="max-w-2xl text-center z-20 mt-20" data-animate="fade-up">
+                    <p class="text-xl text-white/50 font-medium">Unlocking Global Markets with Precision and Speed.</p>
+                </div>
+            </div>
+
+            <div class="waveDiv animation-wave">
+                <div class="wave-content-wrapper first-wave">
+                    <div class="wave-image first-image"></div>
+                </div>
+                <div class="wave-content-wrapper second-wave">
+                    <div class="wave-image second-image"></div>
+                </div>
+                <div class="wave-content-wrapper third-wave">
+                    <div class="wave-image third-image"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 1: The Precision Engine (Asymmetric Grid) -->
+        <section class="py-32 bg-white dark:bg-bgDark overflow-hidden">
+            <div class="container mx-auto px-6 md:px-12">
+                <div class="max-w-4xl mx-auto text-center mb-24" data-animate="fade-up">
+                    <span
+                        class="inline-block px-4 py-2 bg-secondary/10 dark:bg-accent/10 rounded-full text-[10px] font-bold uppercase tracking-[0.2em] mb-6 border border-secondary/20 dark:border-accent/20"><span
+                            class="gradient-text">Core
+                            Methodology</span></span>
+                    <h2 class="text-4xl lg:text-7xl font-bold font-heading text-primary dark:text-white mb-6">The
+                        <span class="gradient-text italic">Precision</span> Engine.
+                    </h2>
+                    <p class="text-gray-500 text-lg mx-auto max-w-2xl mb-12">Our structured approach to complex
+                        localization ensures
+                        that
+                        your technical requirements meet cultural expectations without losing speed.</p>
+
+                    <div class="flex justify-center -space-x-4">
+                        <img src="https://i.pravatar.cc/100?u=1"
+                            class="w-16 h-16 rounded-full border-4 border-white dark:border-bgDark shadow-xl"
+                            alt="Lead Expert">
+                        <img src="https://i.pravatar.cc/100?u=2"
+                            class="w-16 h-16 rounded-full border-4 border-white dark:border-bgDark shadow-xl"
+                            alt="Lead Expert">
+                        <img src="https://i.pravatar.cc/100?u=3"
+                            class="w-16 h-16 rounded-full border-4 border-white dark:border-bgDark shadow-xl"
+                            alt="Lead Expert">
+                        <div
+                            class="w-16 h-16 rounded-full bg-secondary text-white flex items-center justify-center font-bold border-4 border-white dark:border-bgDark shadow-xl">
+                            +12</div>
+                    </div>
+                </div>
+
+                <div class="grid lg:grid-cols-12 gap-8">
+                    <!-- Tall Card -->
+                    <div class="lg:col-span-4" data-animate="reveal">
+                        <div
+                            class="h-full p-12 rounded-[3.5rem] bg-gray-50 dark:bg-cardDark border border-transparent hover:border-secondary/20 transition-all group">
+                            <div
+                                class="w-16 h-16 bg-secondary/10 text-secondary rounded-2xl flex items-center justify-center mb-10 group-hover:rotate-12 transition-transform">
+                                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+                                </svg>
+                            </div>
+                            <h3 class="text-3xl font-bold text-primary dark:text-white mb-6">Technical Translation</h3>
+                            <p class="text-gray-500 mb-10">Complex engineering, medical, and legal protocols translated
+                                with 100% terminological accuracy across 45 industries.</p>
+                            <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=400"
+                                class="w-full h-48 object-cover rounded-3xl opacity-50 group-hover:opacity-100 transition-opacity"
+                                alt="Tech Visual">
+                        </div>
+                    </div>
+                    <!-- Grid of 4 -->
+                    <div class="lg:col-span-8 grid md:grid-cols-2 gap-8">
+                        <div data-animate="fade-up"
+                            class="p-10 rounded-[2.5rem] border border-gray-100 dark:border-gray-800 hover:bg-white dark:hover:bg-cardDark transition-all group">
+                            <h4 class="text-xl font-bold text-primary dark:text-white mb-4 flex items-center gap-3">
+                                <span
+                                    class="w-8 h-8 bg-hero-pink/10 text-hero-pink rounded-lg flex items-center justify-center text-xs">01</span>
+                                SaaS Localization
+                            </h4>
+                            <p class="text-gray-500 text-sm">Full lifecycle localization for SaaS platforms, including
+                                UI sync, real-time QA, and continuous deployment.</p>
+                        </div>
+                        <div data-animate="fade-up" style="transition-delay: 100ms;"
+                            class="p-10 rounded-[2.5rem] border border-gray-100 dark:border-gray-800 hover:bg-white dark:hover:bg-cardDark transition-all group">
+                            <h4 class="text-xl font-bold text-primary dark:text-white mb-4 flex items-center gap-3">
+                                <span
+                                    class="w-8 h-8 bg-hero-green/10 text-hero-green rounded-lg flex items-center justify-center text-xs">02</span>
+                                Marketing Transcreation
+                            </h4>
+                            <p class="text-gray-500 text-sm">Emotional resonance mapping to ensure your seasonal
+                                campaigns hit the mark in every territory.</p>
+                        </div>
+                        <div data-animate="fade-up" style="transition-delay: 200ms;"
+                            class="p-10 rounded-[2.5rem] border border-gray-100 dark:border-gray-800 hover:bg-white dark:hover:bg-cardDark transition-all group">
+                            <h4 class="text-xl font-bold text-primary dark:text-white mb-4 flex items-center gap-3">
+                                <span
+                                    class="w-8 h-8 bg-secondary/10 text-secondary rounded-lg flex items-center justify-center text-xs">03</span>
+                                AI-Human Hybrid
+                            </h4>
+                            <p class="text-gray-500 text-sm">LLM-assisted workflows with expert human post-editing for
+                                high-volume content at scale.</p>
+                        </div>
+                        <div data-animate="fade-up" style="transition-delay: 300ms;"
+                            class="p-10 rounded-[2.5rem] border border-gray-100 dark:border-gray-800 hover:bg-white dark:hover:bg-cardDark transition-all group">
+                            <h4 class="text-xl font-bold text-primary dark:text-white mb-4 flex items-center gap-3">
+                                <span
+                                    class="w-8 h-8 bg-accent/10 text-accent rounded-lg flex items-center justify-center text-xs">04</span>
+                                Multimedia & Dubbing
+                            </h4>
+                            <p class="text-gray-500 text-sm">Professional VO and subtitling for internal training or
+                                external global branding.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 2: The Global Response Hub -->
+        <section class="py-32 relative bg-bgDark overflow-hidden">
+            <div class="absolute inset-0 bg-gradient-to-br from-primary/20 to-secondary/5"></div>
+            <div class="container mx-auto px-6 md:px-12 relative z-10">
+                <div class="grid lg:grid-cols-2 gap-24 items-center">
+                    <div data-animate="reveal" class="relative">
+                        <div class="absolute -inset-10 bg-secondary/20 rounded-full blur-[100px] animate-pulse"></div>
+                        <div
+                            class="relative bg-black/40 backdrop-blur-3xl rounded-[3rem] p-12 border border-white/10 overflow-hidden">
+                            <!-- Animated Pulse Visual -->
+                            <div class="flex items-center justify-center h-80 relative">
+                                <div class="absolute w-40 h-40 border-2 border-hero-green/20 rounded-full animate-ping">
+                                </div>
+                                <div
+                                    class="absolute w-64 h-64 border border-secondary/10 rounded-full animate-reverse-spin">
+                                </div>
+                                <div
+                                    class="w-24 h-24 bg-gradient-to-tr from-secondary to-hero-green rounded-full shadow-[0_0_40px_rgba(46,134,193,0.5)] flex items-center justify-center relative z-10">
+                                    <svg class="w-12 h-12 text-white" fill="none" stroke="currentColor"
+                                        viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M12 11c0 3.517-1.009 6.799-2.753 9.571m-3.44-2.04l.054-.09A10.003 10.003 0 0012 3c1.223 0 2.39.218 3.476.614m.852 1.035A10.001 10.001 0 0121.247 12c0 2.487-.908 4.757-2.41 6.487m-3.376-3.48c-.329-.11-.658-.226-.98-.354m-2.41-1.391a10.04 10.04 0 01-1.144-1.49m0 0a10.04 10.04 0 001.446-2.02m0 0l.071-.123" />
+                                    </svg>
+                                </div>
+                                <div
+                                    class="absolute top-0 right-0 p-4 bg-white/10 rounded-xl backdrop-blur-md border border-white/10 animate-float">
+                                    <p class="text-[10px] uppercase font-bold text-white/40 mb-1">Live Sync</p>
+                                    <p class="text-xs text-hero-green font-mono">152ms Latency</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div data-animate="fade-up">
+                        <span
+                            class="inline-block px-4 py-2 bg-hero-green/10 dark:bg-accent/10 rounded-full text-xs font-bold uppercase tracking-widest mb-6 border border-hero-green/20 dark:border-accent/20"><span
+                                class="gradient-text">Execution
+                                & Velocity</span></span>
+                        <h2 class="text-4xl lg:text-6xl font-bold font-heading text-white mb-8">Real-time Global <span
+                                class="italic gradient-text">Response Hub.</span></h2>
+                        <ul class="space-y-8">
+                            <li class="flex gap-6">
+                                <div
+                                    class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-hero-green shrink-0">
+                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M5 13l4 4L19 7" />
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h5 class="text-xl font-bold text-white mb-1">Adaptive Load Balancing</h5>
+                                    <p class="text-white/40 text-sm">Traffic is dynamically routed across 10 global
+                                        regional hubs to minimize delivery times.</p>
+                                </div>
+                            </li>
+                            <li class="flex gap-6">
+                                <div
+                                    class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-hero-pink shrink-0">
+                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M5 13l4 4L19 7" />
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h5 class="text-xl font-bold text-white mb-1">Unified API Governance</h5>
+                                    <p class="text-white/40 text-sm">One integration point for all translation, LQA, and
+                                        delivery services worldwide.</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3: The Linguistic DNA -->
+        <section class="py-32 bg-white dark:bg-bgDark">
+            <div class="container mx-auto px-6 md:px-12">
+                <div class="text-center max-w-3xl mx-auto mb-20" data-animate="fade-up">
+                    <span
+                        class="inline-block px-4 py-2 bg-hero-pink/10 dark:bg-accent/10 rounded-full text-xs font-bold uppercase tracking-widest mb-6 border border-hero-pink/20 dark:border-accent/20"><span
+                            class="gradient-text">Linguistic
+                            Intelligence</span></span>
+                    <h2 class="text-4xl lg:text-5xl font-bold font-heading text-primary dark:text-white mb-6">Deep
+                        <span class="gradient-text italic">Contextual DNA.</span>
+                    </h2>
+                    <p class="text-gray-500">We analyze linguistic patterns at a molecular level to preserve the core
+                        intent of your brand across all cultural boundaries.</p>
+                </div>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div data-animate="zoom-in"
+                        class="p-8 rounded-[2rem] border border-gray-100 dark:border-gray-800 hover:border-hero-pink transition-colors">
+                        <p class="text-4xl font-bold text-primary dark:text-white mb-4">01</p>
+                        <h4 class="text-xl font-bold mb-4">Semantic Mapping</h4>
+                        <p class="text-gray-500 text-sm">Identifying hidden meanings and emotional cues in the source
+                            text.</p>
+                    </div>
+                    <div data-animate="zoom-in" style="transition-delay: 100ms;"
+                        class="p-8 rounded-[2rem] border border-gray-100 dark:border-gray-800 hover:border-hero-green transition-colors">
+                        <p class="text-4xl font-bold text-primary dark:text-white mb-4">02</p>
+                        <h4 class="text-xl font-bold mb-4">Cultural Vetting</h4>
+                        <p class="text-gray-500 text-sm">Scoring content for regional sensitivity and market-specific
+                            norms.</p>
+                    </div>
+                    <div data-animate="zoom-in" style="transition-delay: 200ms;"
+                        class="p-8 rounded-[2rem] border border-gray-100 dark:border-gray-800 hover:border-secondary transition-colors">
+                        <p class="text-4xl font-bold text-primary dark:text-white mb-4">03</p>
+                        <h4 class="text-xl font-bold mb-4">Tone Synchronicity</h4>
+                        <p class="text-gray-500 text-sm">Matching the 'weight' of the original voice to maintain brand
+                            authority.</p>
+                    </div>
+                    <div data-animate="zoom-in" style="transition-delay: 300ms;"
+                        class="p-8 rounded-[2rem] border border-gray-100 dark:border-gray-800 hover:border-hero-pink transition-colors">
+                        <p class="text-4xl font-bold text-primary dark:text-white mb-4">04</p>
+                        <h4 class="text-xl font-bold mb-4">LQA Validation</h4>
+                        <p class="text-gray-500 text-sm">Final heuristic review by native subject-matter experts of the
+                            highest level.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 4: Future Ready (Innovation Lab) -->
+        <section class="py-32 relative bg-primary overflow-hidden">
+            <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10">
+            </div>
+            <div class="container mx-auto px-6 md:px-12 relative z-10">
+                <div
+                    class="p-16 lg:p-24 bg-white/10 backdrop-blur-3xl rounded-[4rem] border border-white/10 text-center">
+                    <span
+                        class="inline-block px-4 py-2 bg-hero-green/20 dark:bg-accent/10 rounded-full text-xs font-bold uppercase tracking-widest mb-8 border border-hero-green/20 dark:border-accent/20"
+                        data-animate="fade-up"><span class="gradient-text">Global Expansion</span></span>
+                    <h2 class="text-4xl lg:text-7xl font-bold font-heading text-white mb-8" data-animate="fade-up">Ready
+                        <br><span class="gradient-text italic">for the Next Frontier?</span>
+                    </h2>
+                    <p class="text-white/60 text-xl max-w-2xl mx-auto mb-12" data-animate="fade-up">Join 500+ global
+                        enterprises scaling their narratives with Lingua's next-generation linguistic engine.</p>
+                    <div class="flex flex-col sm:flex-row items-center justify-center gap-10 md:gap-12"
+                        data-animate="fade-up">
+                        <a href="booking.html" class="btn-premium btn-accent px-10 py-4 w-full sm:w-auto">Start
+                            Your Transformation</a>
+                        <a href="services.html"
+                            class="btn-premium border-2 border-white/30 text-white hover:bg-white hover:text-primary transition-all px-10 py-4 w-full sm:w-auto">View
+                            Technical Specs</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer Section -->
+    <footer class="bg-gray-100 dark:bg-bgDark pt-24 pb-12 border-t border-gray-200 dark:border-gray-800">
+        <div class="container mx-auto px-6 md:px-12">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-20">
+                <!-- Brand -->
+                <div>
+                    <a href="index.html" class="brand-logo mb-6 text-primary dark:text-white flex items-center gap-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        <span class="font-heading font-bold text-xl">Lingua</span>
+                    </a>
+                    <p class="text-gray-500 dark:text-gray-400 leading-relaxed mb-8">
+                        The world's leading language services provider for enterprise growth. Combining human expertise
+                        with AI efficiency.
+                    </p>
+                    <div class="flex gap-4">
+                        <a href="#"
+                            class="w-10 h-10 rounded-full bg-white dark:bg-cardDark flex items-center justify-center text-primary dark:text-white hover:bg-secondary hover:text-white transition-all shadow-sm">
+                            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+                                <path
+                                    d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z" />
+                            </svg>
+                        </a>
+                        <a href="#"
+                            class="w-10 h-10 rounded-full bg-white dark:bg-cardDark flex items-center justify-center text-primary dark:text-white hover:bg-secondary hover:text-white transition-all shadow-sm">
+                            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+                                <path
+                                    d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.761 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                            </svg>
+                        </a>
+                        <a href="#"
+                            class="w-10 h-10 rounded-full bg-white dark:bg-cardDark flex items-center justify-center text-primary dark:text-white hover:bg-secondary hover:text-white transition-all shadow-sm">
+                            <svg class="w-5 h-5 stroke-current fill-none" viewBox="0 0 24 24" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                            </svg>
+                        </a>
+                        <a href="#"
+                            class="w-10 h-10 rounded-full bg-white dark:bg-cardDark flex items-center justify-center text-primary dark:text-white hover:bg-secondary hover:text-white transition-all shadow-sm">
+                            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+                                <path
+                                    d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-8.74h-2.942v-3.411h2.942v-2.516c0-2.915 1.78-4.502 4.38-4.502 1.245 0 2.315.093 2.627.135v3.046h-1.802c-1.414 0-1.687.672-1.687 1.657v2.18h3.371l-.439 3.41h-2.932v8.741h6.1c.731 0 1.324-.593 1.324-1.324v-21.351c0-.732-.593-1.325-1.324-1.325z" />
+                            </svg>
+                        </a>
+                        <a href="#"
+                            class="w-10 h-10 rounded-full bg-white dark:bg-cardDark flex items-center justify-center text-primary dark:text-white hover:bg-secondary hover:text-white transition-all shadow-sm">
+                            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+                                <path
+                                    d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 4-8 4z" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div class="flex flex-col gap-6">
+                    <h4 class="font-heading font-bold text-lg text-primary dark:text-white">Quick Links</h4>
+                    <ul class="flex flex-col gap-4">
+                        <li><a href="index.html"
+                                class="text-gray-500 dark:text-gray-400 hover:text-secondary transition-colors">Home</a>
+                        </li>
+                        <li><a href="services.html"
+                                class="text-gray-500 dark:text-gray-400 hover:text-secondary transition-colors">Our
+                                Services</a></li>
+                        <li><a href="dashboard.html"
+                                class="text-gray-500 dark:text-gray-400 hover:text-secondary transition-colors">Client
+                                Dashboard</a></li>
+                        <li><a href="blog.html"
+                                class="text-gray-500 dark:text-gray-400 hover:text-secondary transition-colors">News &
+                                Articles</a></li>
+                    </ul>
+                </div>
+
+                <!-- Services -->
+                <div class="flex flex-col gap-6">
+                    <h4 class="font-heading font-bold text-lg text-primary dark:text-white">Services</h4>
+                    <ul class="flex flex-col gap-4">
+                        <li><a href="#"
+                                class="text-gray-500 dark:text-gray-400 hover:text-secondary transition-colors">Document
+                                Translation</a></li>
+                        <li><a href="#"
+                                class="text-gray-500 dark:text-gray-400 hover:text-secondary transition-colors">SaaS
+                                Localization</a></li>
+                        <li><a href="#"
+                                class="text-gray-500 dark:text-gray-400 hover:text-secondary transition-colors">Interpretation</a>
+                        </li>
+                        <li><a href="#"
+                                class="text-gray-500 dark:text-gray-400 hover:text-secondary transition-colors">Transcription</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Newsletter -->
+                <div class="flex flex-col gap-6">
+                    <h4 class="font-heading font-bold text-lg text-primary dark:text-white">Join Our Newsletter</h4>
+                    <p class="text-gray-500 dark:text-gray-400">Get the latest insights on global expansion delivered to
+                        your inbox.</p>
+                    <form class="relative group">
+                        <input type="email" placeholder="Email Address"
+                            class="w-full bg-white dark:bg-cardDark border border-gray-200 dark:border-gray-800 rounded-full px-6 py-4 focus:ring-2 focus:ring-secondary outline-none transition-all dark:text-white">
+                        <button
+                            class="absolute right-2 top-2 bg-secondary text-white w-10 h-10 rounded-full flex items-center justify-center hover:bg-primary transition-all">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                            </svg>
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <div
+                class="pt-12 border-t border-gray-200 dark:border-gray-800 flex flex-col md:flex-row justify-between items-center gap-6">
+                <p class="text-gray-500 dark:text-gray-400 text-sm">© 2026 Lingua. All rights reserved.
+                </p>
+                <div class="flex gap-8 text-sm">
+                    <a href="#" class="text-gray-500 dark:text-gray-400 hover:text-secondary transition-colors">Privacy
+                        Policy</a>
+                    <a href="#" class="text-gray-500 dark:text-gray-400 hover:text-secondary transition-colors">Terms of
+                        Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+</body>
+
+</html>

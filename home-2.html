@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lingua | SaaS Localization & Translation Memory</title>
+    <meta name="description"
+        content="Continuously localize your SaaS, apps, and platforms with Lingua's tech-driven translation workflows.">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0B1F3A',
+                        secondary: '#2E86C1',
+                        accent: '#D4AF37',
+                        bgLight: '#F7FAFC',
+                        bgDark: '#071521',
+                        cardDark: '#0F2A3D',
+                        textDark: '#EAF4FF',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Poppins', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <!-- Animation Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/gsap.min.js"></script>
+    <style>
+        @import url("https://fonts.googleapis.com/css?family=Lora|Open+Sans:800&display=swap");
+    </style>
+</head>
+
+<body class="theme-light overflow-x-hidden transition-colors duration-500">
+
+    <!-- Header (Identical to index.html) -->
+    <header
+        class="fixed top-0 left-0 right-0 z-50 bg-white/80 dark:bg-bgDark/80 backdrop-blur-md transition-all duration-300 py-4">
+        <div class="container mx-auto px-6 md:px-12 flex items-center justify-between">
+            <a href="index.html" class="brand-logo flex items-center gap-2 group">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <span class="text-primary dark:text-textDark font-heading font-bold text-xl tracking-tight">Lingua
+                </span>
+            </a>
+            <nav class="hidden lg:flex items-center gap-8">
+                <a href="index.html"
+                    class="font-medium text-primary dark:text-textDark hover:text-secondary transition-colors">Home</a>
+                <a href="home-2.html"
+                    class="font-medium text-primary dark:text-secondary hover:text-secondary transition-colors">SaaS</a>
+                <a href="about.html"
+                    class="font-medium text-primary dark:text-textDark hover:text-secondary transition-colors">About</a>
+                <a href="services.html"
+                    class="font-medium text-primary dark:text-textDark hover:text-secondary transition-colors">Services</a>
+                <a href="blog.html"
+                    class="font-medium text-primary dark:text-textDark hover:text-secondary transition-colors">Blog</a>
+                <a href="booking.html"
+                    class="font-medium text-primary dark:text-textDark hover:text-secondary transition-colors">Booking</a>
+                <a href="dashboard.html"
+                    class="font-medium text-primary dark:text-textDark hover:text-secondary transition-colors">Dashboard</a>
+                <div class="flex items-center gap-4 border-l border-gray-200 dark:border-gray-700 pl-6 ml-4">
+                    <a href="login.html"
+                        class="font-medium text-primary dark:text-textDark hover:text-secondary transition-colors">Login</a>
+                    <a href="register.html"
+                        class="px-5 py-2 bg-secondary text-white rounded-full font-semibold hover:bg-primary transition-all">Sign
+                        Up</a>
+                    <button id="theme-toggle" class="theme-toggle-btn text-primary dark:text-textDark"
+                        aria-label="Toggle Theme">
+                        <span id="theme-toggle-icon"></span>
+                    </button>
+                </div>
+            </nav>
+            <div class="flex items-center gap-4 lg:hidden">
+                <button id="menu-btn" class="text-primary dark:text-textDark" aria-label="Open Menu">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6h16M4 12h16m-7 6h7" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu Offcanvas -->
+    <div id="menu-overlay" class="fixed inset-0 bg-black/50 z-[60] hidden backdrop-blur-sm"></div>
+    <aside id="mobile-menu" class="fixed top-0 right-0 h-screen w-80 bg-white dark:bg-bgDark z-[70] p-8 shadow-2xl">
+        <div class="flex justify-between items-center mb-12">
+            <div class="brand-logo flex items-center gap-2">
+                <span class="text-primary dark:text-textDark font-heading font-bold text-xl">Lingua</span>
+            </div>
+            <button id="close-menu" class="text-primary dark:text-textDark">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+        </div>
+        <nav class="flex flex-col gap-6 text-xl text-primary dark:text-textDark">
+            <a href="index.html">Home</a>
+            <a href="home-2.html">SaaS Platform</a>
+            <a href="about.html">About</a>
+            <a href="services.html">Services</a>
+            <a href="blog.html">Blog</a>
+            <a href="booking.html">Booking</a>
+            <a href="dashboard.html">Dashboard</a>
+            <a href="login.html" class="text-secondary font-bold">Login</a>
+            <a href="register.html" class="px-5 py-3 bg-secondary text-white rounded-xl text-center">Sign Up</a>
+        </nav>
+    </aside>
+
+    <!-- Anti-Gravity Three.js Hero -->
+    <section class="min-h-screen relative flex items-center overflow-hidden bg-black py-32">
+        <div id="hero-canvas" class="absolute inset-0 z-0"></div>
+        <div class="container mx-auto px-6 md:px-12 relative z-10">
+            <header class="header max-w-2xl px-6" data-animate="fade-up">
+                <h1 class="text-6xl md:text-8xl font-bold font-heading mb-6 text-white leading-tight">
+                    <span class="gradient-text">Infinite Global Reach</span>
+                </h1>
+                <p class="header__sub-title text-3xl md:text-4xl italic text-white/95 mb-8 font-serif relative pt-4">
+                    <span class="gradient-text">SaaS-first localization.</span>
+                </p>
+                <p class="header__exerpt text-xl text-white/60 max-w-sm leading-relaxed font-serif">
+                    Continuous, AI-driven translation memory and real-time linguistic delivery for the world's
+                    fastest-growing enterprise clouds.
+                </p>
+                <div class="mt-12 flex flex-col sm:flex-row gap-6">
+                    <a href="booking.html" class="btn-premium btn-accent px-10 py-5 text-lg">Request Access</a>
+                    <a href="#workflow"
+                        class="btn-premium border-2 border-white/20 text-white px-10 py-5 text-lg hover:bg-white/10 transition-all">Explore
+                        Platform</a>
+                </div>
+            </header>
+        </div>
+    </section>
+
+
+    <!-- Stats Counters -->
+    <section class="py-20 bg-primary text-white overflow-hidden">
+        <div class="container mx-auto px-6 md:px-12">
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-12 text-center">
+                <div>
+                    <div class="text-5xl font-bold font-heading mb-2 text-accent"><span class="stat-counter"
+                            data-target="150">0</span>+</div>
+                    <p class="text-white/60 font-medium">Languages Supported</p>
+                </div>
+                <div>
+                    <div class="text-5xl font-bold font-heading mb-2 text-accent"><span class="stat-counter"
+                            data-target="98">0</span>%</div>
+                    <p class="text-white/60 font-medium">Accuracy Rate</p>
+                </div>
+                <div>
+                    <div class="text-5xl font-bold font-heading mb-2 text-accent"><span class="stat-counter"
+                            data-target="500">0</span>k</div>
+                    <p class="text-white/60 font-medium">Words Delivered Daily</p>
+                </div>
+                <div>
+                    <div class="text-5xl font-bold font-heading mb-2 text-accent"><span class="stat-counter"
+                            data-target="24">0</span>/7</div>
+                    <p class="text-white/60 font-medium">Expert Support</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Workflow Timeline -->
+    <!-- Section: Global Intelligence Hub -->
+    <section id="global-hub"
+        class="pt-48 pb-32 relative overflow-hidden bg-gray-50 dark:bg-bgDark transition-colors duration-500">
+        <!-- Background Glows -->
+        <div
+            class="absolute -top-40 -left-40 w-[600px] h-[600px] bg-secondary/20 rounded-full blur-[120px] -z-10 animate-pulse">
+        </div>
+        <div class="absolute -bottom-40 -right-40 w-[600px] h-[600px] bg-hero-pink/10 rounded-full blur-[120px] -z-10 animate-pulse"
+            style="animation-delay: 2s;"></div>
+
+        <div class="container mx-auto px-6 md:px-12">
+            <div class="flex flex-col lg:flex-row items-center gap-20">
+                <!-- Left: Content & Stats -->
+                <div class="lg:w-1/2" data-animate="fade-up">
+                    <span
+                        class="inline-flex px-4 py-2 bg-gray-200 dark:bg-white/10 rounded-full text-xs font-bold uppercase tracking-widest mb-6 border border-gray-300 dark:border-white/5"><span
+                            class="gradient-text">Scale
+                            & Performance</span></span>
+                    <h2
+                        class="text-4xl lg:text-7xl font-bold font-heading text-primary dark:text-white mb-8 leading-tight">
+                        Mapping your
+                        <br><span class="gradient-text italic">Global Ambition.</span>
+                    </h2>
+                    <p class="text-gray-600 dark:text-white/60 text-lg mb-12 leading-relaxed"><span
+                            class="gradient-text">Our intelligence hub
+                            monitors over 150
+                            language nodes in real-time. We don't just bridge gaps; we create a seamless global neural
+                            network for your brand's digital journey.</span></p>
+
+                    <div class="grid grid-cols-2 gap-8">
+                        <div
+                            class="p-8 rounded-[2rem] bg-white dark:bg-white/5 border border-gray-100 dark:border-white/10 backdrop-blur-md group hover:bg-gray-100 dark:hover:bg-white/10 transition-all shadow-sm">
+                            <h4
+                                class="text-3xl font-bold text-hero-green mb-2 group-hover:scale-105 transition-transform">
+                                100k+</h4>
+                            <p class="text-gray-400 dark:text-white/40 text-xs font-bold uppercase tracking-widest">
+                                Active Packets / Sec
+                            </p>
+                        </div>
+                        <div
+                            class="p-8 rounded-[2rem] bg-white dark:bg-white/5 border border-gray-100 dark:border-white/10 backdrop-blur-md group hover:bg-white/10 transition-all shadow-sm">
+                            <h4
+                                class="text-3xl font-bold text-hero-pink mb-2 group-hover:scale-105 transition-transform">
+                                0.05s</h4>
+                            <p class="text-gray-400 dark:text-white/40 text-xs font-bold uppercase tracking-widest">
+                                Global Handover</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: Map Visualization -->
+                <div class="lg:w-1/2 relative" data-animate="reveal">
+                    <!-- Scanner Bar Animation -->
+                    <div
+                        class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-hero-green to-transparent z-20 animate-scan pointer-events-none">
+                    </div>
+
+                    <div class="relative group">
+                        <!-- Holographic Frame -->
+                        <div
+                            class="absolute -inset-4 bg-gradient-to-r from-secondary/20 to-hero-pink/20 rounded-[3.5rem] blur-xl opacity-50 group-hover:opacity-100 transition-opacity">
+                        </div>
+
+                        <div
+                            class="relative rounded-[3rem] overflow-hidden border border-white/20 shadow-[0_0_50px_rgba(0,0,0,0.5)]">
+                            <img src="https://media.coschedule.com/uploads/2022/07/Blog_A-Global-Expansion-Guide-How-to-Expand-your-Business-With-Localization_Featured-Image-Header.png"
+                                alt="Global Localization Hub"
+                                class="w-full h-auto transition-transform duration-[2s] group-hover:scale-110">
+
+                            <!-- Floating Data Labels -->
+                            <div class="absolute top-1/4 left-1/4 p-4 bg-black/60 backdrop-blur-lg rounded-2xl border border-white/10 animate-bounce"
+                                style="animation-duration: 4s;">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-2 h-2 rounded-full bg-hero-green animate-ping"></div>
+                                    <span class="text-[10px] font-mono text-white/80">NODE_SYDNEY: ONLINE</span>
+                                </div>
+                            </div>
+                            <div class="absolute bottom-1/4 right-1/4 p-4 bg-black/60 backdrop-blur-lg rounded-2xl border border-white/10 animate-bounce"
+                                style="animation-duration: 6s; animation-delay: 1s;">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-2 h-2 rounded-full bg-hero-pink animate-ping"></div>
+                                    <span class="text-[10px] font-mono text-white/80">NODE_BERLIN: SYNCING</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Decorative Tech Ring -->
+                    <div
+                        class="absolute -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] border border-white/5 rounded-full animate-reverse-spin pointer-events-none">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Feature Highlights -->
+    <section class="py-32 bg-gray-50 dark:bg-bgDark/50">
+        <div class="container mx-auto px-6 md:px-12">
+            <div class="grid lg:grid-cols-2 gap-24 items-center mb-32">
+                <div data-animate="fade-up">
+                    <span
+                        class="inline-block px-4 py-2 bg-secondary/10 dark:bg-accent/10 rounded-full text-xs font-bold uppercase tracking-widest mb-6 border border-secondary/20 dark:border-accent/20"><span
+                            class="gradient-text">Repository
+                            IQ</span></span>
+                    <h2 class="text-4xl font-bold font-heading text-primary dark:text-white mb-6">
+                        <span class="gradient-text">Translation Memory Redefined.</span>
+                    </h2>
+                    <p class="text-lg text-gray-600 dark:text-gray-400 mb-8 leading-relaxed">Never pay for the same
+                        sentence twice. Our intelligent TM engine tracks every repetitive phrase across all your
+                        projects, saving you up to 40% in costs.</p>
+                    <ul class="space-y-4 mb-10">
+                        <li class="flex items-center gap-3 text-primary dark:text-white font-semibold">
+                            <div class="w-6 h-6 rounded-full bg-secondary flex items-center justify-center"><svg
+                                    class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
+                                        d="M5 13l4 4L19 7" />
+                                </svg></div>
+                            Real-time suggestions
+                        </li>
+                        <li class="flex items-center gap-3 text-primary dark:text-white font-semibold">
+                            <div class="w-6 h-6 rounded-full bg-secondary flex items-center justify-center"><svg
+                                    class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
+                                        d="M5 13l4 4L19 7" />
+                                </svg></div>
+                            Global consistency check
+                        </li>
+                        <li class="flex items-center gap-3 text-primary dark:text-white font-semibold">
+                            <div class="w-6 h-6 rounded-full bg-secondary flex items-center justify-center"><svg
+                                    class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
+                                        d="M5 13l4 4L19 7" />
+                                </svg></div>
+                            Cloud-synced terminology
+                        </li>
+                    </ul>
+                    <a href="services.html" class="inline-flex items-center gap-2 font-bold text-secondary">Explore TM
+                        Technology <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                        </svg></a>
+                </div>
+                <div data-animate="reveal"
+                    class="rounded-[3rem] overflow-hidden shadow-2xl border border-gray-100 dark:border-gray-800">
+                    <img src="https://awtomated.com/wp-content/uploads/2025/06/What-Is-Translation-Memory-TM-Software-A-2025-Guide-for-Translators-and-Language-Teams.png"
+                        alt="Translation Memory UI Mockup"
+                        class="w-full h-auto transition-transform hover:scale-105 duration-700">
+                </div>
+            </div>
+        </div>
+        <!-- Section 1: Neural Language Grid -->
+        <section class="py-32 relative overflow-hidden bg-white dark:bg-bgDark">
+            <div class="absolute inset-0 opacity-[0.03] dark:opacity-[0.07]">
+                <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <pattern id="grid" width="80" height="80" patternUnits="userSpaceOnUse">
+                            <path d="M 80 0 L 0 0 0 80" fill="none" stroke="currentColor" stroke-width="1" />
+                        </pattern>
+                    </defs>
+                    <rect width="100%" height="100%" fill="url(#grid)" />
+                </svg>
+            </div>
+
+            <div class="container mx-auto px-6 md:px-12">
+                <div class="grid lg:grid-cols-2 gap-24 items-center">
+                    <div class="order-2 lg:order-1 relative" data-animate="reveal">
+                        <div
+                            class="absolute -top-20 -left-20 w-64 h-64 bg-secondary/10 rounded-full blur-3xl animate-pulse">
+                        </div>
+                        <div
+                            class="relative bg-white dark:bg-cardDark p-12 rounded-[3rem] shadow-2xl border border-gray-100 dark:border-gray-800">
+                            <div class="flex flex-col gap-8">
+                                <div class="flex items-center gap-6">
+                                    <div
+                                        class="w-16 h-16 bg-secondary/10 text-secondary rounded-2xl flex items-center justify-center">
+                                        <svg class="w-8 h-8 font-bold" fill="none" stroke="currentColor"
+                                            viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M13 10V3L4 14h7v7l9-11h-7z" />
+                                        </svg>
+                                    </div>
+                                    <h3 class="text-2xl font-bold text-primary dark:text-white">Neural Learning Nodes
+                                    </h3>
+                                </div>
+                                <p class="text-gray-500 dark:text-gray-400">Our proprietary neural network adapts to
+                                    your brand tone in real-time. Every translation improves the next, creating a living
+                                    linguistic ecosystem that grows with your enterprise.</p>
+                                <div class="grid grid-cols-2 gap-6 mt-4">
+                                    <div class="p-6 bg-gray-50 dark:bg-bgDark/50 rounded-2xl">
+                                        <p class="text-3xl font-bold text-primary dark:text-white mb-2">~12ms</p>
+                                        <p class="text-xs text-gray-400 uppercase tracking-widest font-bold">Latency</p>
+                                    </div>
+                                    <div class="p-6 bg-gray-50 dark:bg-bgDark/50 rounded-2xl">
+                                        <p class="text-3xl font-bold text-primary dark:text-white mb-2">99.9%</p>
+                                        <p class="text-xs text-gray-400 uppercase tracking-widest font-bold">Uptime</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="order-1 lg:order-2" data-animate="fade-up">
+                        <span
+                            class="inline-block px-4 py-2 bg-secondary/10 dark:bg-accent/10 rounded-full text-xs font-bold uppercase tracking-widest mb-6 border border-secondary/20 dark:border-accent/20"><span
+                                class="gradient-text">Visual
+                                Intelligence.</span></span>
+                        <h2
+                            class="text-4xl lg:text-6xl font-bold font-heading text-primary dark:text-white mb-8 leading-tight">
+                            Observe the <span class="gradient-text">Expansion.</span></h2>
+                        <p class="text-lg text-gray-500 mb-10 leading-relaxed">Watch as your global footprint expands
+                            through our interactive neural grid. We don't just translate text; we map your impact across
+                            the world's most complex digital landscapes.</p>
+                        <button
+                            class="px-8 py-4 bg-primary dark:bg-white dark:text-primary rounded-full font-bold shadow-xl hover:shadow-2xl transition-all transform hover:-translate-y-1">View
+                            Global Roadmap</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: Cultural Nuance Engine -->
+        <section id="nuance-engine" class="py-32 relative bg-white dark:bg-bgDark overflow-hidden">
+            <div class="container mx-auto px-6 md:px-12">
+                <div class="grid lg:grid-cols-2 gap-24 items-center">
+                    <div data-animate="fade-up">
+                        <span
+                            class="inline-block px-4 py-2 bg-accent/10 rounded-full text-xs font-bold uppercase tracking-widest mb-6 border border-accent/20"><span
+                                class="gradient-text">Linguistic
+                                IQ</span></span>
+                        <h2
+                            class="text-4xl lg:text-7xl font-bold font-heading text-primary dark:text-white mb-8 leading-tight">
+                            Beyond Words: <br><span class="gradient-text italic">Contextual IQ.</span></h2>
+                        <p class="text-lg text-gray-500 mb-12 leading-relaxed">Our engine doesn't just translate text;
+                            it decodes cultural intent. We analyze over 50 contextual vectors per sentence, ensuring
+                            your brand's wit, warmth, and wisdom resonate exactly as intended.</p>
+
+                        <div class="space-y-6">
+                            <div class="flex items-start gap-6 group">
+                                <div
+                                    class="w-12 h-12 rounded-xl bg-hero-pink/10 text-hero-pink flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
+                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h4 class="text-xl font-bold text-primary dark:text-white mb-2">Sarcasm & Wit
+                                        Detection</h4>
+                                    <p class="text-gray-500 text-sm">Recognizes regional humor and idioms to prevent
+                                        embarrassing literal translations.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-6 group">
+                                <div
+                                    class="w-12 h-12 rounded-xl bg-hero-green/10 text-hero-green flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
+                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.99 7.99 0 0120 13a7.989 7.989 0 01-2.343 5.657z" />
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h4 class="text-xl font-bold text-primary dark:text-white mb-2">Brand Voice Sync
+                                    </h4>
+                                    <p class="text-gray-500 text-sm">Maintains your brand's unique tone (Professional,
+                                        Playful, or Poetic) across 100+ languages.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="relative" data-animate="reveal">
+                        <!-- Floating Context Bubbles -->
+                        <div
+                            class="absolute -top-10 -right-10 w-32 h-32 bg-secondary/20 rounded-full blur-2xl animate-float">
+                        </div>
+                        <div class="absolute -bottom-10 -left-10 w-40 h-40 bg-hero-pink/20 rounded-full blur-3xl animate-float"
+                            style="animation-delay: 2s;"></div>
+
+                        <div class="relative group">
+                            <div
+                                class="absolute -inset-1 bg-gradient-to-r from-hero-pink to-hero-green rounded-[3.5rem] blur opacity-25 group-hover:opacity-50 transition duration-1000">
+                            </div>
+                            <div
+                                class="relative bg-white dark:bg-cardDark rounded-[3rem] overflow-hidden border border-gray-100 dark:border-gray-800 shadow-2xl">
+                                <img src="https://images.unsplash.com/photo-1639322537228-f710d846310a?auto=format&fit=crop&q=80&w=1200"
+                                    alt="Cultural Nuance Engine Visualization"
+                                    class="w-full h-auto transition-transform duration-[3s] group-hover:scale-105">
+                                <div class="absolute inset-0 bg-gradient-to-t from-primary/40 to-transparent"></div>
+                                <div
+                                    class="absolute bottom-10 left-10 right-10 flex gap-4 overflow-x-auto no-scrollbar pb-2">
+                                    <span
+                                        class="px-4 py-2 bg-white/20 backdrop-blur-md rounded-full text-white text-[10px] font-bold uppercase tracking-widest border border-white/10">Slang
+                                        Analysis</span>
+                                    <span
+                                        class="px-4 py-2 bg-white/20 backdrop-blur-md rounded-full text-white text-[10px] font-bold uppercase tracking-widest border border-white/10">Dialect
+                                        Mapping</span>
+                                    <span
+                                        class="px-4 py-2 bg-white/20 backdrop-blur-md rounded-full text-white text-[10px] font-bold uppercase tracking-widest border border-white/10">Tone
+                                        Check</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- Section: Global Command Center -->
+        <section id="command-center" class="py-32 relative bg-white dark:bg-bgDark overflow-hidden">
+            <div class="container mx-auto px-6 md:px-12">
+                <div class="grid lg:grid-cols-2 gap-24 items-center">
+                    <div class="relative" data-animate="reveal">
+                        <!-- Clocks / Dashboard Visual -->
+                        <div
+                            class="absolute -top-10 -left-10 w-40 h-40 bg-secondary/10 rounded-full blur-[100px] animate-pulse">
+                        </div>
+
+                        <div class="relative group">
+                            <div
+                                class="absolute inset-0 bg-gradient-to-r from-secondary to-hero-green rounded-[3.5rem] blur-2xl opacity-10 group-hover:opacity-20 transition-opacity">
+                            </div>
+                            <div
+                                class="relative bg-white dark:bg-cardDark rounded-[3rem] overflow-hidden border border-gray-100 dark:border-gray-800 shadow-2xl">
+                                <img src="https://images.unsplash.com/photo-1551288049-bbdac8a28a1e?auto=format&fit=crop&q=80&w=1200"
+                                    alt="Global Command Center"
+                                    class="w-full h-auto transition-transform duration-[3s] group-hover:scale-105">
+
+                                <!-- Overlay Timezones -->
+                                <div class="absolute top-10 left-10 flex flex-col gap-4">
+                                    <div
+                                        class="px-6 py-4 bg-primary/80 backdrop-blur-xl rounded-2xl border border-white/10 flex items-center gap-6 shadow-2xl">
+                                        <div class="w-2 h-2 rounded-full bg-hero-green animate-pulse"></div>
+                                        <div>
+                                            <p class="text-[10px] text-white/40 font-bold uppercase tracking-widest">New
+                                                York</p>
+                                            <p class="text-xl font-mono text-white font-bold">03:44 <span
+                                                    class="text-xs text-white/50 font-normal">EST</span></p>
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="px-6 py-4 bg-primary/80 backdrop-blur-xl rounded-2xl border border-white/10 flex items-center gap-6 shadow-2xl">
+                                        <div class="w-2 h-2 rounded-full bg-hero-pink animate-pulse"></div>
+                                        <div>
+                                            <p class="text-[10px] text-white/40 font-bold uppercase tracking-widest">
+                                                Tokyo</p>
+                                            <p class="text-xl font-mono text-white font-bold">16:44 <span
+                                                    class="text-xs text-white/50 font-normal">JST</span></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div data-animate="fade-up">
+                        <span
+                            class="inline-block px-4 py-2 bg-secondary/10 dark:bg-accent/10 rounded-full text-xs font-bold uppercase tracking-widest mb-6 border border-secondary/20 dark:border-accent/20"><span
+                                class="gradient-text">24/7
+                                Global Access</span></span>
+                        <h2
+                            class="text-4xl lg:text-7xl font-bold font-heading text-primary dark:text-white mb-8 leading-tight">
+                            Your Global <br><span class="gradient-text italic">Command Center.</span></h2>
+                        <p class="text-lg text-gray-500 mb-10 leading-relaxed">Scaling globally requires more than just
+                            software. It needs a human command center. Our dedicated account managers work across every
+                            time zone to ensure your projects never stop moving.</p>
+
+                        <div class="grid grid-cols-2 gap-8 mb-12">
+                            <div>
+                                <h4 class="text-4xl font-bold text-primary dark:text-white mb-2 tracking-tighter">&lt;
+                                    1hr</h4>
+                                <p class="text-xs text-gray-400 font-bold uppercase tracking-widest">Avg Response Time
+                                </p>
+                            </div>
+                            <div>
+                                <h4 class="text-4xl font-bold text-primary dark:text-white mb-2 tracking-tighter">100%
+                                </h4>
+                                <p class="text-xs text-gray-400 font-bold uppercase tracking-widest">Dedicated PM Match
+                                </p>
+                            </div>
+                        </div>
+
+                        <a href="booking.html"
+                            class="inline-flex items-center gap-4 px-10 py-5 bg-primary dark:bg-white dark:text-primary rounded-full font-bold shadow-2xl hover:bg-secondary hover:text-white dark:hover:bg-secondary dark:hover:text-white transition-all transform hover:-translate-y-1">
+                            Connect to Command
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+
+
+        <!-- Footer (Identical to index.html) -->
+        <!-- Footer Section -->
+        <footer class="bg-gray-100 dark:bg-bgDark pt-24 pb-12 border-t border-gray-200 dark:border-gray-800">
+            <div class="container mx-auto px-6 md:px-12">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-20">
+                    <!-- Brand -->
+                    <div>
+                        <a href="index.html"
+                            class="brand-logo mb-6 text-primary dark:text-white flex items-center gap-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                            <span class="font-heading font-bold text-xl">Lingua</span>
+                        </a>
+                        <p class="text-gray-500 dark:text-gray-400 leading-relaxed mb-8">
+                            The world's leading language services provider for enterprise growth. Combining human
+                            expertise
+                            with AI efficiency.
+                        </p>
+                        <div class="flex gap-4">
+                            <a href="#"
+                                class="w-10 h-10 rounded-full bg-white dark:bg-cardDark flex items-center justify-center text-primary dark:text-white hover:bg-secondary hover:text-white transition-all shadow-sm">
+                                <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+                                    <path
+                                        d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z" />
+                                </svg>
+                            </a>
+                            <a href="#"
+                                class="w-10 h-10 rounded-full bg-white dark:bg-cardDark flex items-center justify-center text-primary dark:text-white hover:bg-secondary hover:text-white transition-all shadow-sm">
+                                <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+                                    <path
+                                        d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.761 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                                </svg>
+                            </a>
+                            <a href="#"
+                                class="w-10 h-10 rounded-full bg-white dark:bg-cardDark flex items-center justify-center text-primary dark:text-white hover:bg-secondary hover:text-white transition-all shadow-sm">
+                                <svg class="w-5 h-5 stroke-current fill-none" viewBox="0 0 24 24" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                                </svg>
+                            </a>
+                            <a href="#"
+                                class="w-10 h-10 rounded-full bg-white dark:bg-cardDark flex items-center justify-center text-primary dark:text-white hover:bg-secondary hover:text-white transition-all shadow-sm">
+                                <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+                                    <path
+                                        d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-8.74h-2.942v-3.411h2.942v-2.516c0-2.915 1.78-4.502 4.38-4.502 1.245 0 2.315.093 2.627.135v3.046h-1.802c-1.414 0-1.687.672-1.687 1.657v2.18h3.371l-.439 3.41h-2.932v8.741h6.1c.731 0 1.324-.593 1.324-1.324v-21.351c0-.732-.593-1.325-1.324-1.325z" />
+                                </svg>
+                            </a>
+                            <a href="#"
+                                class="w-10 h-10 rounded-full bg-white dark:bg-cardDark flex items-center justify-center text-primary dark:text-white hover:bg-secondary hover:text-white transition-all shadow-sm">
+                                <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+                                    <path
+                                        d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 4-8 4z" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Quick Links -->
+                    <div class="flex flex-col gap-6">
+                        <h4 class="font-heading font-bold text-lg text-primary dark:text-white">Quick Links</h4>
+                        <ul class="flex flex-col gap-4">
+                            <li><a href="index.html"
+                                    class="text-gray-500 dark:text-gray-400 hover:text-secondary transition-colors">Home</a>
+                            </li>
+                            <li><a href="services.html"
+                                    class="text-gray-500 dark:text-gray-400 hover:text-secondary transition-colors">Our
+                                    Services</a></li>
+                            <li><a href="dashboard.html"
+                                    class="text-gray-500 dark:text-gray-400 hover:text-secondary transition-colors">Client
+                                    Dashboard</a></li>
+                            <li><a href="blog.html"
+                                    class="text-gray-500 dark:text-gray-400 hover:text-secondary transition-colors">News
+                                    &
+                                    Articles</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Services -->
+                    <div class="flex flex-col gap-6">
+                        <h4 class="font-heading font-bold text-lg text-primary dark:text-white">Services</h4>
+                        <ul class="flex flex-col gap-4">
+                            <li><a href="#"
+                                    class="text-gray-500 dark:text-gray-400 hover:text-secondary transition-colors">Document
+                                    Translation</a></li>
+                            <li><a href="#"
+                                    class="text-gray-500 dark:text-gray-400 hover:text-secondary transition-colors">SaaS
+                                    Localization</a></li>
+                            <li><a href="#"
+                                    class="text-gray-500 dark:text-gray-400 hover:text-secondary transition-colors">Interpretation</a>
+                            </li>
+                            <li><a href="#"
+                                    class="text-gray-500 dark:text-gray-400 hover:text-secondary transition-colors">Transcription</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Newsletter -->
+                    <div class="flex flex-col gap-6">
+                        <h4 class="font-heading font-bold text-lg text-primary dark:text-white">Join Our Newsletter</h4>
+                        <p class="text-gray-500 dark:text-gray-400">Get the latest insights on global expansion
+                            delivered to
+                            your inbox.</p>
+                        <form class="relative group">
+                            <input type="email" placeholder="Email Address"
+                                class="w-full bg-white dark:bg-cardDark border border-gray-200 dark:border-gray-800 rounded-full px-6 py-4 focus:ring-2 focus:ring-secondary outline-none transition-all dark:text-white">
+                            <button
+                                class="absolute right-2 top-2 bg-secondary text-white w-10 h-10 rounded-full flex items-center justify-center hover:bg-primary transition-all">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24"
+                                    stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                                </svg>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+                <div
+                    class="pt-12 border-t border-gray-200 dark:border-gray-800 flex flex-col md:flex-row justify-between items-center gap-6">
+                    <p class="text-gray-500 dark:text-gray-400 text-sm">© 2026 Lingua. All rights reserved.
+                    </p>
+                    <div class="flex gap-8 text-sm">
+                        <a href="#"
+                            class="text-gray-500 dark:text-gray-400 hover:text-secondary transition-colors">Privacy
+                            Policy</a>
+                        <a href="#"
+                            class="text-gray-500 dark:text-gray-400 hover:text-secondary transition-colors">Terms of
+                            Service</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        <button id="back-to-top" aria-label="Back to Top"><svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6"
+                fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18" />
+            </svg></button>
+        <script src="assets/js/main.js"></script>
+</body>
+
+</html>

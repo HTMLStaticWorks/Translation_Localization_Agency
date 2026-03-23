@@ -94,9 +94,6 @@
         <div class="flex justify-between items-center mb-12">
             <div class="brand-logo flex items-center gap-4">
                 <span class="text-primary dark:text-textDark font-heading font-bold text-xl">Lingua</span>
-                <button class="theme-toggle-btn text-primary dark:text-textDark" aria-label="Toggle Theme">
-                    <span></span>
-                </button>
             </div>
             <button id="close-menu" class="text-primary dark:text-textDark hover:text-secondary">
                 <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" fill="none" viewBox="0 0 24 24"
@@ -119,11 +116,15 @@
             <a href="booking.html"
                 class="font-semibold text-primary dark:text-textDark hover:text-secondary transition-colors">Booking</a>
             <a href="dashboard.html"
-                class="font-semibold text-primary dark:text-textDark hover:text-secondary transition-colors">Dashboard</a>
+                class="px-6 py-4 border-2 border-secondary/20 text-secondary dark:text-secondary rounded-xl text-center font-bold btn-hover-home">Dashboard</a>
             <hr class="border-gray-100 dark:border-gray-800 my-4">
-            <a href="login.html" class="font-semibold text-secondary transition-colors">Login</a>
-            <a href="register.html" class="px-5 py-3 bg-secondary text-white rounded-xl text-center font-semibold">Sign
-                Up</a>
+            <div class="flex flex-col gap-4">
+                <a href="login.html"
+                    class="px-6 py-4 border-2 border-secondary/20 text-secondary dark:text-secondary rounded-xl text-center font-bold btn-hover-home">Login</a>
+                <a href="register.html"
+                    class="px-6 py-4 bg-secondary text-white rounded-xl text-center font-bold btn-hover-home shadow-lg shadow-secondary/20">Sign
+                    Up</a>
+            </div>
         </nav>
     </aside>
 
@@ -481,14 +482,14 @@
 
                 <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
                     <div data-animate="zoom-in"
-                        class="p-8 rounded-[2rem] border border-gray-100 dark:border-gray-800 hover:border-hero-pink transition-colors">
+                        class="p-8 rounded-[2rem] border border-gray-100 dark:border-gray-800 hover:border-secondary transition-colors">
                         <p class="text-4xl font-bold text-primary dark:text-white mb-4">01</p>
                         <h4 class="text-xl font-bold mb-4">Semantic Mapping</h4>
                         <p class="text-gray-500 text-sm">Identifying hidden meanings and emotional cues in the source
                             text.</p>
                     </div>
                     <div data-animate="zoom-in" style="transition-delay: 100ms;"
-                        class="p-8 rounded-[2rem] border border-gray-100 dark:border-gray-800 hover:border-hero-green transition-colors">
+                        class="p-8 rounded-[2rem] border border-gray-100 dark:border-gray-800 hover:border-secondary transition-colors">
                         <p class="text-4xl font-bold text-primary dark:text-white mb-4">02</p>
                         <h4 class="text-xl font-bold mb-4">Cultural Vetting</h4>
                         <p class="text-gray-500 text-sm">Scoring content for regional sensitivity and market-specific
@@ -502,7 +503,7 @@
                             authority.</p>
                     </div>
                     <div data-animate="zoom-in" style="transition-delay: 300ms;"
-                        class="p-8 rounded-[2rem] border border-gray-100 dark:border-gray-800 hover:border-hero-pink transition-colors">
+                        class="p-8 rounded-[2rem] border border-gray-100 dark:border-gray-800 hover:border-secondary transition-colors">
                         <p class="text-4xl font-bold text-primary dark:text-white mb-4">04</p>
                         <h4 class="text-xl font-bold mb-4">LQA Validation</h4>
                         <p class="text-gray-500 text-sm">Final heuristic review by native subject-matter experts of the

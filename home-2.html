@@ -69,12 +69,12 @@
                 <a href="booking.html"
                     class="font-medium text-primary dark:text-textDark hover:text-secondary transition-colors">Booking</a>
                 <a href="dashboard.html"
-                    class="px-4 py-2 border border-secondary text-secondary rounded-full font-semibold hover:bg-secondary hover:text-white transition-all">Dashboard</a>
+                    class="px-4 py-2 border border-secondary text-secondary rounded-full font-semibold btn-hover-home transition-all">Dashboard</a>
                 <div class="flex items-center gap-4 border-l border-gray-200 dark:border-gray-700 pl-6 ml-4">
                     <a href="login.html"
-                        class="px-4 py-2 border border-secondary text-secondary rounded-full font-semibold hover:bg-secondary hover:text-white transition-all">Login</a>
+                        class="px-4 py-2 border border-secondary text-secondary rounded-full font-semibold btn-hover-home transition-all">Login</a>
                     <a href="register.html"
-                        class="px-5 py-2 bg-secondary text-white rounded-full font-semibold hover:bg-primary transition-all">Sign
+                        class="px-5 py-2 bg-secondary text-white rounded-full font-semibold btn-hover-home transition-all">Sign
                         Up</a>
                     <button id="theme-toggle" class="theme-toggle-btn text-primary dark:text-textDark"
                         aria-label="Toggle Theme">
@@ -103,9 +103,6 @@
         <div class="flex justify-between items-center mb-12">
             <div class="brand-logo flex items-center gap-4">
                 <span class="text-primary dark:text-textDark font-heading font-bold text-xl">Lingua</span>
-                <button class="theme-toggle-btn text-primary dark:text-textDark" aria-label="Toggle Theme">
-                    <span></span>
-                </button>
             </div>
             <button id="close-menu" class="text-primary dark:text-textDark">
                 <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" fill="none" viewBox="0 0 24 24"
@@ -121,9 +118,16 @@
             <a href="services.html">Services</a>
             <a href="blog.html">Blog</a>
             <a href="booking.html">Booking</a>
-            <a href="dashboard.html">Dashboard</a>
-            <a href="login.html" class="text-secondary font-bold">Login</a>
-            <a href="register.html" class="px-5 py-3 bg-secondary text-white rounded-xl text-center">Sign Up</a>
+            <a href="dashboard.html"
+                class="px-6 py-4 border-2 border-secondary/20 text-secondary dark:text-secondary rounded-xl text-center font-bold btn-hover-home">Dashboard</a>
+            <hr class="border-gray-100 dark:border-gray-800 my-4">
+            <div class="flex flex-col gap-4">
+                <a href="login.html"
+                    class="px-6 py-4 border-2 border-secondary/20 text-secondary dark:text-secondary rounded-xl text-center font-bold btn-hover-home">Login</a>
+                <a href="register.html"
+                    class="px-6 py-4 bg-secondary text-white rounded-xl text-center font-bold btn-hover-home shadow-lg shadow-secondary/20">Sign
+                    Up</a>
+            </div>
         </nav>
     </aside>
 
@@ -317,7 +321,7 @@
                         </li>
                     </ul>
                     <a href="services.html"
-                        class="inline-flex items-center gap-2 font-bold text-secondary hover:text-primary transition-colors">Explore
+                        class="inline-flex items-center gap-2 font-bold text-secondary dark:text-accent hover:text-primary dark:hover:text-white transition-colors">Explore
                         TM
                         Technology <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -384,7 +388,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="order-1 lg:order-2" data-animate="fade-up">
+                <div class="order-1 lg:order-2 text-center lg:text-left" data-animate="fade-up">
                     <span
                         class="inline-block px-4 py-2 bg-secondary/10 dark:bg-accent/10 rounded-full text-xs font-bold uppercase tracking-widest mb-6 border border-secondary/20 dark:border-accent/20"><span
                             class="gradient-text">Visual
@@ -392,11 +396,12 @@
                     <h2
                         class="text-4xl lg:text-6xl font-bold font-heading text-primary dark:text-white mb-8 leading-tight">
                         Observe the <span class="gradient-text">Expansion.</span></h2>
-                    <p class="text-lg text-gray-500 mb-10 leading-relaxed">Watch as your global footprint expands
+                    <p class="text-lg text-gray-500 mb-10 leading-relaxed max-w-2xl mx-auto lg:mx-0">Watch as your
+                        global footprint expands
                         through our interactive neural grid. We don't just translate text; we map your impact across
                         the world's most complex digital landscapes.</p>
                     <button
-                        class="px-8 py-4 bg-primary dark:bg-white dark:text-primary rounded-full font-bold shadow-xl hover:shadow-2xl transition-all transform hover:-translate-y-1">View
+                        class="px-8 py-4 bg-primary dark:bg-white dark:text-primary rounded-full font-bold shadow-xl btn-hover-home transition-all">View
                         Global Roadmap</button>
                 </div>
             </div>
@@ -538,7 +543,7 @@
                     </div>
                 </div>
 
-                <div data-animate="fade-up">
+                <div class="text-center lg:text-left" data-animate="fade-up">
                     <span
                         class="inline-block px-4 py-2 bg-secondary/10 dark:bg-accent/10 rounded-full text-xs font-bold uppercase tracking-widest mb-6 border border-secondary/20 dark:border-accent/20"><span
                             class="gradient-text">24/7
@@ -546,18 +551,19 @@
                     <h2
                         class="text-4xl lg:text-7xl font-bold font-heading text-primary dark:text-white mb-8 leading-tight">
                         Your Global <br><span class="gradient-text italic">Command Center.</span></h2>
-                    <p class="text-lg text-gray-500 mb-10 leading-relaxed">Scaling globally requires more than just
+                    <p class="text-lg text-gray-500 mb-10 leading-relaxed max-w-2xl mx-auto lg:mx-0">Scaling globally
+                        requires more than just
                         software. It needs a human command center. Our dedicated account managers work across every
                         time zone to ensure your projects never stop moving.</p>
 
                     <div class="grid grid-cols-2 gap-8 mb-12">
-                        <div>
+                        <div class="flex flex-col items-center lg:items-start">
                             <h4 class="text-4xl font-bold text-primary dark:text-white mb-2 tracking-tighter">&lt;
                                 1hr</h4>
                             <p class="text-xs text-gray-400 font-bold uppercase tracking-widest">Avg Response Time
                             </p>
                         </div>
-                        <div>
+                        <div class="flex flex-col items-center lg:items-start">
                             <h4 class="text-4xl font-bold text-primary dark:text-white mb-2 tracking-tighter">100%
                             </h4>
                             <p class="text-xs text-gray-400 font-bold uppercase tracking-widest">Dedicated PM Match

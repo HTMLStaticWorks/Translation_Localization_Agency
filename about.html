@@ -95,9 +95,6 @@
         <div class="flex justify-between items-center mb-12">
             <div class="brand-logo flex items-center gap-4">
                 <span class="text-primary dark:text-textDark font-heading font-bold text-xl">Lingua</span>
-                <button class="theme-toggle-btn text-primary dark:text-textDark" aria-label="Toggle Theme">
-                    <span></span>
-                </button>
             </div>
             <button id="close-menu" class="text-primary dark:text-textDark hover:text-secondary">
                 <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" fill="none" viewBox="0 0 24 24"
@@ -117,11 +114,15 @@
             <a href="blog.html"
                 class="font-semibold text-primary dark:text-textDark hover:text-secondary transition-colors">Blog</a>
             <a href="dashboard.html"
-                class="font-semibold text-primary dark:text-textDark hover:text-secondary transition-colors">Dashboard</a>
+                class="px-6 py-4 border-2 border-secondary/20 text-secondary dark:text-secondary rounded-xl text-center font-bold btn-hover-home">Dashboard</a>
             <hr class="border-gray-100 dark:border-gray-800 my-4">
-            <a href="login.html" class="font-semibold text-secondary transition-colors">Login</a>
-            <a href="register.html" class="px-5 py-3 bg-secondary text-white rounded-xl text-center font-semibold">Sign
-                Up</a>
+            <div class="flex flex-col gap-4">
+                <a href="login.html"
+                    class="px-6 py-4 border-2 border-secondary/20 text-secondary dark:text-secondary rounded-xl text-center font-bold btn-hover-home">Login</a>
+                <a href="register.html"
+                    class="px-6 py-4 bg-secondary text-white rounded-xl text-center font-bold btn-hover-home shadow-lg shadow-secondary/20">Sign
+                    Up</a>
+            </div>
         </nav>
     </aside>
 
@@ -152,33 +153,25 @@
                             world. Lingua was born from the intersection of deep linguistic expertise and neural-scale
                             technology.
                         </p>
-                        <div class="flex gap-6">
+                        <div class="flex flex-col sm:flex-row gap-4 sm:gap-6">
                             <a href="#dna"
-                                class="px-8 py-4 bg-secondary text-white rounded-full font-bold hover:bg-primary transition-all">Explore
+                                class="px-8 py-4 bg-secondary text-white rounded-full font-bold hover:bg-primary transition-all text-center">Explore
                                 Our DNA</a>
                             <a href="services.html"
-                                class="px-8 py-4 border border-white/20 text-white rounded-full font-bold hover:bg-white/5 transition-all">View
+                                class="px-8 py-4 border border-white/20 text-white rounded-full font-bold hover:bg-white/5 transition-all text-center">View
                                 Mission</a>
                         </div>
                     </div>
-                    <div class="lg:w-1/2 relative" data-animate="reveal-right">
+                    <div class="lg:w-1/2 relative mt-12 lg:mt-0" data-animate="reveal-right">
                         <div
-                            class="relative rounded-[4rem] overflow-hidden shadow-2xl skew-y-3 transform hover:skew-y-0 transition-transform duration-700">
+                            class="relative rounded-[4rem] overflow-hidden shadow-2xl skew-y-3 lg:skew-y-3 transform hover:skew-y-0 transition-transform duration-700">
                             <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&q=80&w=1000"
                                 class="w-full grayscale hover:grayscale-0 transition-all duration-700"
                                 alt="Visionary Team">
                             <div class="absolute inset-0 bg-gradient-to-t from-primary via-transparent to-transparent">
                             </div>
                         </div>
-                        <!-- Floating Badge -->
-                        <div
-                            class="absolute bottom-4 left-1/2 -translate-x-1/2 sm:-bottom-10 sm:-left-10 sm:translate-x-0 p-6 sm:p-8 bg-white dark:bg-cardDark rounded-3xl shadow-3xl animate-float flex items-center gap-6">
-                            <div
-                                class="w-16 h-16 bg-hero-green/10 text-hero-green rounded-2xl flex items-center justify-center font-black text-2xl">
-                                45+</div>
-                            <p class="text-primary dark:text-white font-bold tracking-tight">Cultures <br><span
-                                    class="text-gray-400 font-normal">Synchronized</span></p>
-                        </div>
+
                     </div>
                 </div>
             </div>
@@ -265,26 +258,26 @@
             </div>
             <div class="container mx-auto px-6 md:px-12 relative z-10">
                 <div class="grid lg:grid-cols-2 gap-24 items-center">
-                    <div data-animate="fade-up">
+                    <div class="text-center lg:text-left" data-animate="fade-up">
                         <span class="text-hero-green font-bold tracking-widest uppercase text-sm mb-4 block"><span
                                 class="gradient-text">The Global Quotient</span></span>
                         <h2 class="text-4xl lg:text-7xl font-black font-heading text-white mb-8">Metrics of <br><span
                                 class="gradient-text italic">Influence.</span></h2>
-                        <div class="grid grid-cols-2 gap-12">
-                            <div class="space-y-2">
+                        <div class="grid grid-cols-2 gap-12 max-w-2xl mx-auto lg:mx-0">
+                            <div class="space-y-2 flex flex-col items-center lg:items-start">
                                 <p class="text-6xl font-black text-white" id="counter-1">1.2B</p>
                                 <p class="text-white/40 uppercase tracking-widest text-xs font-bold">Words Localized</p>
                             </div>
-                            <div class="space-y-2">
+                            <div class="space-y-2 flex flex-col items-center lg:items-start">
                                 <p class="text-6xl font-black text-hero-green" id="counter-2">99%</p>
                                 <p class="text-white/40 uppercase tracking-widest text-xs font-bold">Client Retention
                                 </p>
                             </div>
-                            <div class="space-y-2">
+                            <div class="space-y-2 flex flex-col items-center lg:items-start">
                                 <p class="text-6xl font-black text-hero-pink" id="counter-3">450+</p>
                                 <p class="text-white/40 uppercase tracking-widest text-xs font-bold">Global Hubs</p>
                             </div>
-                            <div class="space-y-2">
+                            <div class="space-y-2 flex flex-col items-center lg:items-start">
                                 <p class="text-6xl font-black text-white" id="counter-4">24/7</p>
                                 <p class="text-white/40 uppercase tracking-widest text-xs font-bold">Active Governance
                                 </p>

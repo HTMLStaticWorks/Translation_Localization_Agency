@@ -10,10 +10,19 @@ document.addEventListener('DOMContentLoaded', () => {
     const overlay = document.getElementById('sidebar-overlay');
 
     if (sidebarToggle && sidebar) {
+        const sidebarClose = document.getElementById('sidebar-close');
+
         sidebarToggle.addEventListener('click', () => {
             sidebar.classList.toggle('active');
             overlay.classList.toggle('hidden');
         });
+
+        if (sidebarClose) {
+            sidebarClose.addEventListener('click', () => {
+                sidebar.classList.remove('active');
+                overlay.classList.add('hidden');
+            });
+        }
 
         overlay.addEventListener('click', () => {
             sidebar.classList.remove('active');

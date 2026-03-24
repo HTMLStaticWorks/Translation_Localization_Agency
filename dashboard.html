@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Client Dashboard | Lingua</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -14,7 +15,7 @@
                     colors: {
                         primary: '#0B1F3A',
                         secondary: '#2E86C1',
-                        accent: '#D4AF37',
+                        accent: '#3df9c6',
                         bgLight: '#F7FAFC',
                         bgDark: '#071521',
                         cardDark: '#0F2A3D',
@@ -31,14 +32,14 @@
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 
-<body class="transition-colors duration-500 bg-gray-50 dark:bg-bgDark overflow-hidden h-screen flex">
+<body class="transition-colors duration-500 bg-gray-50 dark:bg-bgDark overflow-hidden h-screen block lg:flex">
 
     <!-- Sidebar Overlay -->
     <div id="sidebar-overlay" class="fixed inset-0 bg-black/50 z-40 hidden lg:hidden"></div>
 
     <!-- Sidebar Container -->
     <aside id="sidebar"
-        class="sidebar w-72 h-full bg-white dark:bg-cardDark border-r border-gray-100 dark:border-gray-800 flex flex-col shrink-0 z-50">
+        class="sidebar fixed lg:static right-0 top-0 z-50 w-72 h-full bg-white dark:bg-cardDark border-l lg:border-l-0 lg:border-r border-gray-100 dark:border-gray-800 flex flex-col transform translate-x-full lg:translate-x-0 transition-transform duration-300">
         <!-- Sidebar Header -->
         <div class="p-8 border-b border-gray-100 dark:border-gray-800 flex items-center justify-between">
             <a href="index.html" class="brand-logo flex items-center gap-2 group">
@@ -126,7 +127,7 @@
     </aside>
 
     <!-- Main Content Body -->
-    <main class="flex-1 flex flex-col min-w-0">
+    <main class="h-screen flex flex-col min-w-0 w-full overflow-x-hidden">
         <!-- Header -->
         <header
             class="h-20 shrink-0 bg-white dark:bg-cardDark border-b border-gray-100 dark:border-gray-800 px-8 flex items-center justify-between relative">
@@ -166,10 +167,10 @@
         </header>
 
         <!-- Scrollable Content Area -->
-        <div class="flex-1 overflow-y-auto p-8 space-y-10">
+        <div class="flex-1 overflow-y-auto overflow-x-hidden w-full p-8 space-y-10">
 
             <!-- Dashboard Top Info -->
-            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 w-full">
                 <!-- Card 1: Active Projects -->
                 <div class="card p-8 rounded-3xl group flex flex-col justify-between h-40">
                     <p class="text-xs font-bold text-gray-400 uppercase tracking-widest">Active Projects</p>
@@ -206,8 +207,8 @@
             </div>
 
             <!-- Project Table (Full Width) -->
-            <div class="grid lg:grid-cols-3 gap-10">
-                <div class="lg:col-span-3 space-y-6">
+            <div class="grid lg:grid-cols-3 gap-10 w-full">
+                <div class="lg:col-span-3 space-y-6 min-w-0 w-full">
                     <div class="flex items-center justify-between">
                         <h3 class="text-2xl font-bold text-primary dark:text-white">Project Tracking</h3>
                         <div class="flex gap-2">
@@ -218,74 +219,77 @@
                         </div>
                     </div>
                     <div class="card overflow-hidden rounded-[2.5rem]">
-                        <table class="w-full text-left">
-                            <thead class="bg-gray-50/50 dark:bg-gray-800/50 text-xs text-gray-400 uppercase font-bold">
-                                <tr>
-                                    <th class="px-8 py-4">Project ID</th>
-                                    <th class="px-8 py-4">Languages</th>
-                                    <th class="px-8 py-4">Status</th>
-                                    <th class="px-8 py-4">Progress</th>
-                                </tr>
-                            </thead>
-                            <tbody class="divide-y divide-gray-100 dark:divide-gray-800">
-                                <tr>
-                                    <td class="px-8 py-6">
-                                        <p class="font-bold text-primary dark:text-white">LC-2026-0392</p>
-                                        <p class="text-xs text-gray-400">Legal Agreement v2</p>
-                                    </td>
-                                    <td class="px-8 py-6">
-                                        <span class="inline-flex gap-1">🇺🇸 🇪🇸 🇫🇷</span>
-                                    </td>
-                                    <td class="px-8 py-6">
-                                        <span
-                                            class="px-3 py-1 bg-yellow-100 text-yellow-600 rounded-full text-xs font-bold">Review</span>
-                                    </td>
-                                    <td class="px-8 py-6 w-48">
-                                        <div
-                                            class="w-full h-2 bg-gray-100 dark:bg-gray-800 rounded-full overflow-hidden">
-                                            <div class="h-full bg-secondary w-[85%]"></div>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="px-8 py-6">
-                                        <p class="font-bold text-primary dark:text-white">LC-2026-0112</p>
-                                        <p class="text-xs text-gray-400">BioTech User Manual</p>
-                                    </td>
-                                    <td class="px-8 py-6">
-                                        <span class="inline-flex gap-1">🇩🇪 🇯🇵</span>
-                                    </td>
-                                    <td class="px-8 py-6">
-                                        <span
-                                            class="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-xs font-bold">Translating</span>
-                                    </td>
-                                    <td class="px-8 py-6">
-                                        <div
-                                            class="w-full h-2 bg-gray-100 dark:bg-gray-800 rounded-full overflow-hidden">
-                                            <div class="h-full bg-secondary w-[40%]"></div>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="px-8 py-6">
-                                        <p class="font-bold text-primary dark:text-white">LC-2025-0881</p>
-                                        <p class="text-xs text-gray-400">Marketing Assets Q1</p>
-                                    </td>
-                                    <td class="px-8 py-6">
-                                        <span class="inline-flex gap-1">🌐 ALL</span>
-                                    </td>
-                                    <td class="px-8 py-6">
-                                        <span
-                                            class="px-3 py-1 bg-green-100 text-green-600 rounded-full text-xs font-bold">Complete</span>
-                                    </td>
-                                    <td class="px-8 py-6 text-sm text-gray-400 font-bold">100% Verified</td>
-                                </tr>
-                            </tbody>
-                        </table>
+                        <div class="overflow-x-auto w-full">
+                            <table class="w-full text-left">
+                                <thead class="bg-gray-50/50 dark:bg-gray-800/50 text-xs text-gray-400 uppercase font-bold">
+                                    <tr>
+                                        <th class="px-8 py-4">Project ID</th>
+                                        <th class="px-8 py-4">Languages</th>
+                                        <th class="px-8 py-4">Status</th>
+                                        <th class="px-8 py-4">Progress</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-gray-100 dark:divide-gray-800">
+                                    <tr>
+                                        <td class="px-8 py-6">
+                                            <p class="font-bold text-primary dark:text-white">LC-2026-0392</p>
+                                            <p class="text-xs text-gray-400">Legal Agreement v2</p>
+                                        </td>
+                                        <td class="px-8 py-6">
+                                            <span class="inline-flex gap-1"> 🇺🇸 🇪🇸 🇫🇷</span>
+                                        </td>
+                                        <td class="px-8 py-6">
+                                            <span
+                                                class="px-3 py-1 bg-yellow-100 text-yellow-600 rounded-full text-xs font-bold">Review</span>
+                                        </td>
+                                        <td class="px-8 py-6 w-48">
+                                            <div
+                                                class="w-full h-2 bg-gray-100 dark:bg-gray-800 rounded-full overflow-hidden">
+                                                <div class="h-full bg-secondary w-[85%]"></div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-8 py-6">
+                                            <p class="font-bold text-primary dark:text-white">LC-2026-0112</p>
+                                            <p class="text-xs text-gray-400">BioTech User Manual</p>
+                                        </td>
+                                        <td class="px-8 py-6">
+                                            <span class="inline-flex gap-1"> 🇩🇪 🇯🇵</span>
+                                        </td>
+                                        <td class="px-8 py-6">
+                                            <span
+                                                class="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-xs font-bold">Translating</span>
+                                        </td>
+                                        <td class="px-8 py-6">
+                                            <div
+                                                class="w-full h-2 bg-gray-100 dark:bg-gray-800 rounded-full overflow-hidden">
+                                                <div class="h-full bg-secondary w-[40%]"></div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-8 py-6">
+                                            <p class="font-bold text-primary dark:text-white">LC-2025-0881</p>
+                                            <p class="text-xs text-gray-400">Marketing Assets Q1</p>
+                                        </td>
+                                        <td class="px-8 py-6">
+                                            <span class="inline-flex gap-1"> 🌐 ALL</span>
+                                        </td>
+                                        <td class="px-8 py-6">
+                                            <span
+                                                class="px-3 py-1 bg-green-100 text-green-600 rounded-full text-xs font-bold">Complete</span>
+                                        </td>
+                                        <td class="px-8 py-6 text-sm text-gray-400 font-bold">100% Verified</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
 
             </div>
+        </div>
     </main>
 
     <script src="assets/js/main.js"></script>

@@ -380,6 +380,23 @@ body.dark .glassmorphism {
     }
 }
 
+/* --- Mobile Table Scrolling Fix --- */
+@media (max-width: 768px) {
+    .overflow-x-auto {
+        -webkit-overflow-scrolling: touch;
+        touch-action: pan-x;
+    }
+    
+    .overflow-x-auto table {
+        min-width: 600px;
+    }
+    
+    /* Prevent page bounce when scrolling table horizontally */
+    .overflow-x-auto {
+        overscroll-behavior-x: contain;
+    }
+}
+
 /* --- Back to top --- */
 #back-to-top {
     position: fixed;

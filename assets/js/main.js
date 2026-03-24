@@ -4,6 +4,19 @@
 */
 
 document.addEventListener('DOMContentLoaded', () => {
+    const dirToggles = document.querySelectorAll('[data-rtl-toggle]');
+    const savedDir = localStorage.getItem('dir') || 'ltr';
+    document.documentElement.setAttribute('dir', savedDir);
+
+    dirToggles.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const currentDir = document.documentElement.getAttribute('dir') || 'ltr';
+            const nextDir = currentDir === 'rtl' ? 'ltr' : 'rtl';
+            document.documentElement.setAttribute('dir', nextDir);
+            localStorage.setItem('dir', nextDir);
+        });
+    });
+
     // --- Theme Toggle Logic ---
     const themeToggles = document.querySelectorAll('.theme-toggle-btn');
     const body = document.body;
@@ -123,11 +136,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const header = document.querySelector('header');
     window.addEventListener('scroll', () => {
         if (window.scrollY > 50) {
-            header.classList.add('shadow-lg', 'py-2');
-            header.classList.remove('py-4');
+            header.classList.add('shadow-lg');
         } else {
-            header.classList.remove('shadow-lg', 'py-2');
-            header.classList.add('py-4');
+            header.classList.remove('shadow-lg');
         }
     });
 

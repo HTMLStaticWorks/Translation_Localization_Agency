@@ -15,7 +15,7 @@
                     colors: {
                         primary: '#2E86C1',     /* Cyber Blue */
                         secondary: '#0B1F3A',   /* Dark Navy */
-                        accent: '#3df9c6',      /* Neon Green */
+                        accent: '#00A3A3',      /* Solid Teal */
                         bgLight: '#F7FAFC',
                         bgDark: '#071521',
                         cardDark: '#0F2A3D',
@@ -53,8 +53,8 @@
         }
 
         .social-btn:hover {
-            background: rgba(61, 249, 198, 0.1);
-            border-color: #3df9c6;
+            background: rgba(0, 163, 163, 0.1);
+            border-color: #00A3A3;
             transform: translateY(-2px);
         }
     </style>
@@ -127,7 +127,7 @@
 
                     <button type="submit"
                         class="w-full btn-premium btn-accent py-4 text-primary font-bold shadow-lg shadow-accent/10">
-                        Login to Dashboard
+                        Login
                     </button>
                 </form>
 
@@ -142,7 +142,7 @@
                 </div>
 
                 <!-- Social Logins -->
-                <div class="grid grid-cols-3 gap-4">
+                <div class="grid grid-cols-4 gap-4">
                     <button
                         class="social-btn flex items-center justify-center py-4 bg-gray-50 dark:bg-white/5 border border-gray-100 dark:border-white/10 rounded-2xl">
                         <svg class="w-5 h-5 fill-current text-secondary dark:text-white" viewBox="0 0 24 24">
@@ -164,15 +164,22 @@
                                 d="M0 0h11.4v11.4h-11.4v-11.4zm12.6 0h11.4v11.4h-11.4v-11.4zm-12.6 12.6h11.4v11.4h-11.4v-11.4zm12.6 0h11.4v11.4h-11.4v-11.4z" />
                         </svg>
                     </button>
+                    <button
+                        class="social-btn flex items-center justify-center py-4 bg-gray-50 dark:bg-white/5 border border-gray-100 dark:border-white/10 rounded-2xl">
+                        <svg class="w-5 h-5 fill-current text-secondary dark:text-white" viewBox="0 0 24 24">
+                            <path
+                                d="M17.057 12.783c.032 2.588 2.246 3.442 2.276 3.456-.022.072-.351 1.201-1.152 2.37-1.109 1.62-2.257 3.235-4.067 3.268-1.78.033-2.351-1.049-4.385-1.049-2.035 0-2.668 1.016-4.352 1.082-1.747.066-3.04-1.752-4.156-3.37-2.28-3.308-4.02-9.332-1.68-13.385 1.161-2.01 3.228-3.286 5.467-3.318 1.714-.025 3.328 1.157 4.385 1.157 1.057 0 2.969-1.42 5.034-1.213.865.036 3.296.348 4.86 2.634-.127.079-2.898 1.687-2.87 5.086zm-2.731-8.523c.928-1.124 1.553-2.686 1.383-4.26-1.348.054-2.977.897-3.944 2.021-.869 1.008-1.629 2.614-1.423 4.151 1.503.118 3.056-.788 3.984-1.912z" />
+                        </svg>
+                    </button>
                 </div>
-            </div>
 
-            <!-- Footer Link -->
-            <p class="text-center mt-10 text-gray-500">
-                Don't have an account? <a href="register.html"
-                    class="text-secondary dark:text-white font-bold hover:text-accent dark:hover:text-accent transition-colors underline decoration-transparent hover:decoration-accent decoration-2 underline-offset-4">Create
-                    Enterprise Account</a>
-            </p>
+                <!-- Signup Link Info -->
+                <p class="text-center mt-10 text-gray-500">
+                    Don't have an account? <a href="register.html"
+                        class="text-secondary dark:text-white font-bold hover:text-accent dark:hover:text-accent transition-colors underline decoration-transparent hover:decoration-accent decoration-2 underline-offset-4">Create
+                        Enterprise Account</a>
+                </p>
+            </div>
         </div>
     </main>
 

@@ -38,12 +38,44 @@ document.addEventListener('DOMContentLoaded', () => {
             btn.classList.add('bg-secondary', 'text-white');
         });
     });
-
-    // Mock Notification Center
-    const notificationCenter = document.getElementById('notifications-btn');
-    if (notificationCenter) {
-        notificationCenter.addEventListener('click', () => {
-            alert("No new notifications at the moment.");
-        });
-    }
 });
+
+// Section Switching Logic
+function showSection(sectionId) {
+    // 1. Hide all sections
+    const sections = document.querySelectorAll('.content-section');
+    sections.forEach(s => s.classList.add('hidden'));
+
+    // 2. Show target section
+    const targetSection = document.getElementById(`section-${sectionId}`);
+    if (targetSection) {
+        targetSection.classList.remove('hidden');
+    }
+
+    // 3. Update Sidebar Active State
+    const navLinks = document.querySelectorAll('.nav-link');
+    navLinks.forEach(link => {
+        link.classList.remove('bg-secondary/10', 'text-secondary', 'font-bold');
+        link.classList.add('text-gray-400');
+    });
+
+    const activeLink = document.getElementById(`nav-${sectionId}`);
+    if (activeLink) {
+        activeLink.classList.add('bg-secondary/10', 'text-secondary', 'font-bold');
+        activeLink.classList.remove('text-gray-400');
+    }
+
+    // 4. Update Header Title
+    const headerTitle = document.getElementById('header-title');
+    if (headerTitle) {
+        headerTitle.innerText = sectionId.charAt(0).toUpperCase() + sectionId.slice(1);
+    }
+
+    // 5. Close Mobile Sidebar if open
+    const sidebar = document.getElementById('sidebar');
+    const overlay = document.getElementById('sidebar-overlay');
+    if (sidebar && sidebar.classList.contains('active')) {
+        sidebar.classList.remove('active');
+        overlay.classList.add('hidden');
+    }
+}

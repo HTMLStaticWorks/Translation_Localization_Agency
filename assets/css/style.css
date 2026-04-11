@@ -118,6 +118,14 @@ body.dark .card {
     color: rgba(234, 244, 255, 0.92);
 }
 
+/* Preserve visible active link state in dark mode */
+.dark header nav a.font-semibold.text-primary,
+.dark #mobile-menu nav a.font-semibold.text-primary,
+.dark header nav a.font-semibold.text-secondary,
+.dark #mobile-menu nav a.font-semibold.text-secondary {
+    color: var(--accent) !important;
+}
+
 .dark header nav a:hover,
 .dark header nav button[data-rtl-toggle]:hover,
 .dark #mobile-menu nav a:hover,
@@ -125,12 +133,16 @@ body.dark .card {
     color: var(--accent);
 }
 
-/* Keep Dashboard/Login header actions readable in dark mode */
+/* Keep Dashboard/Login/RTL header action button layout visible in dark mode */
 .dark header nav a[href="dashboard.html"],
 .dark header nav a[href="login.html"],
 .dark #mobile-menu nav a[href="dashboard.html"],
-.dark #mobile-menu nav a[href="login.html"] {
+.dark #mobile-menu nav a[href="login.html"],
+.dark header nav button[data-rtl-toggle],
+.dark #mobile-menu nav button[data-rtl-toggle] {
     color: rgba(234, 244, 255, 0.92);
+    border-color: rgba(234, 244, 255, 0.35) !important;
+    background-color: rgba(234, 244, 255, 0.05);
 }
 
 /* Improve dark-mode hover contrast for footer social icons */

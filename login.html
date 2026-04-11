@@ -62,10 +62,12 @@
 
 <body class="bg-white dark:bg-secondary text-secondary dark:text-white overflow-x-hidden min-h-screen flex flex-col">
 
-    <!-- Theme Toggle Floating -->
-    <div class="fixed top-6 right-6 md:top-10 md:right-10 z-50">
+    <!-- Controls Floating -->
+    <div class="fixed top-6 right-6 md:top-10 md:right-10 z-50 flex items-center gap-4">
+        <button type="button" data-rtl-toggle
+            class="p-2 border border-primary text-primary rounded-lg font-semibold hover:bg-primary hover:text-white transition-all w-11 h-11 flex items-center justify-center rtl:bg-primary rtl:text-white backdrop-blur-md bg-white/10">RTL</button>
         <button id="theme-toggle"
-            class="theme-toggle-btn w-12 h-12 bg-gray-100 dark:bg-white/10 backdrop-blur-md rounded-full flex items-center justify-center border border-gray-200 dark:border-white/10 text-secondary dark:text-white hover:bg-gray-200 dark:hover:bg-white/20 transition-all"
+            class="theme-toggle-btn w-11 h-11 bg-gray-100 dark:bg-white/10 backdrop-blur-md rounded-full flex items-center justify-center border border-gray-200 dark:border-white/10 text-secondary dark:text-white hover:bg-gray-200 dark:hover:bg-white/20 transition-all"
             aria-label="Toggle Theme">
             <span id="theme-toggle-icon"></span>
         </button>
@@ -78,14 +80,14 @@
             <!-- Brand Header -->
             <div class="text-center mb-10">
                 <a href="index.html"
-                    class="brand-logo inline-flex items-center gap-2 group mb-10 text-secondary dark:text-white">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 transition-transform group-hover:rotate-12"
+                    class="brand-logo inline-flex items-center gap-4 group mb-10 text-secondary dark:text-white">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12 transition-transform group-hover:rotate-12"
                         fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
                     <span
-                        class="text-xl font-bold font-heading text-black dark:text-textDark tracking-tight">Lingua</span>
+                        class="text-5xl font-bold font-heading text-black dark:text-textDark tracking-tight">Lingua</span>
                 </a>
                 <h1 class="text-3xl font-bold text-secondary dark:text-white mb-2">Welcome Back</h1>
                 <p class="text-gray-400">Secure access to your global translation hub.</p>
@@ -105,16 +107,16 @@
                     </div>
 
                     <div>
-                        <div class="flex justify-between items-center mb-3">
-                            <label
-                                class="block text-sm font-bold text-gray-400 uppercase tracking-widest">Password</label>
-                            <a href="index.html"
-                                class="text-xs font-bold text-primary hover:text-accent dark:text-primary dark:hover:text-accent transition-colors hover:underline">Forgot
-                                Password?</a>
-                        </div>
+                        <label
+                            class="block text-sm font-bold text-gray-400 uppercase tracking-widest mb-3">Password</label>
                         <div class="relative">
                             <input type="password" required placeholder="••••••••"
                                 class="w-full bg-gray-50 dark:bg-white/5 border border-gray-100 dark:border-white/10 rounded-2xl px-6 py-4 outline-none focus:ring-2 focus:ring-primary text-secondary dark:text-white transition-all placeholder:text-gray-500">
+                        </div>
+                        <div class="mt-3 text-right">
+                            <a href="index.html"
+                                class="text-xs font-bold text-primary hover:text-accent dark:text-primary dark:hover:text-accent transition-colors hover:underline">Forgot
+                                Password?</a>
                         </div>
                     </div>
 
@@ -126,7 +128,7 @@
                     </div>
 
                     <button type="submit"
-                        class="w-full btn-premium btn-accent py-4 text-primary font-bold shadow-lg shadow-accent/10">
+                        class="w-full btn-premium btn-accent py-4 text-white font-bold shadow-lg shadow-accent/10">
                         Login
                     </button>
                 </form>

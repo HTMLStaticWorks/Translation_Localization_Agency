@@ -305,7 +305,7 @@ body.dark .glassmorphism {
 
 .btn-accent {
     background-color: var(--accent);
-    color: var(--secondary);
+    color: white;
     border-color: var(--accent);
 }
 

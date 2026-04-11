@@ -110,6 +110,45 @@ body.dark .card {
     color: var(--accent);
 }
 
+/* Keep header/menu links readable in dark mode across pages */
+.dark header nav a,
+.dark header nav button[data-rtl-toggle],
+.dark #mobile-menu nav a,
+.dark #mobile-menu nav button[data-rtl-toggle] {
+    color: rgba(234, 244, 255, 0.92);
+}
+
+.dark header nav a:hover,
+.dark header nav button[data-rtl-toggle]:hover,
+.dark #mobile-menu nav a:hover,
+.dark #mobile-menu nav button[data-rtl-toggle]:hover {
+    color: var(--accent);
+}
+
+/* Keep Dashboard/Login header actions readable in dark mode */
+.dark header nav a[href="dashboard.html"],
+.dark header nav a[href="login.html"],
+.dark #mobile-menu nav a[href="dashboard.html"],
+.dark #mobile-menu nav a[href="login.html"] {
+    color: rgba(234, 244, 255, 0.92);
+}
+
+/* Improve dark-mode hover contrast for footer social icons */
+.dark footer a.w-10.h-10.rounded-full.shadow-sm:hover {
+    color: #ffffff;
+}
+
+/* Keep dashboard sidebar menu readable in dark mode */
+.dark #sidebar .nav-link {
+    color: rgba(234, 244, 255, 0.72);
+}
+
+.dark #sidebar .nav-link:hover,
+.dark #sidebar .nav-link.text-primary,
+.dark #sidebar .nav-link.text-secondary {
+    color: var(--primary);
+}
+
 /* --- Custom Animations --- */
 @keyframes shimmer {
     0% {

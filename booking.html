@@ -192,6 +192,12 @@
             margin-right: auto;
         }
 
+        /* Keep date-picker icon visible on booking form in dark mode */
+        .dark #booking-form input[type="date"]::-webkit-calendar-picker-indicator {
+            filter: invert(1) brightness(1.25);
+            opacity: 1;
+        }
+
         /* Global Brand Styles applied via btn-primary in style.css */
     </style>
 
